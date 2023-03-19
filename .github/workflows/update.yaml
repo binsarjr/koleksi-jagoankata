@@ -31,14 +31,18 @@ jobs:
           git init
           git branch -m main
           git checkout -b results
-          git add results
-          git commit -m "transfer results folder"
       - name: pull commit
         uses: actions/checkout@v2      
         with:
           ref: results
+      - name: Add results change
+        run: |
+          git add results
+          git commit -m "transfer results folder"
+
       - name: Github Push
         uses: ad-m/github-push-action@master
+       
         with:
           directory: "."
           branch: results
