@@ -28,8 +28,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2      
         with:
-         persist-credentials: false
-         fetch-depth: 0
          ref: results
       - run: mv results/* .
       - run: rmdir results
