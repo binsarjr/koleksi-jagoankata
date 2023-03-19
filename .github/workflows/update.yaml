@@ -52,6 +52,7 @@ jobs:
           rmdir results
       - name: commit change
         run: |
+          git add -A
           d=`date '+%Y-%m-%dT%H:%M:%SZ'`
           git commit -m "$d"
       - name: Github Push
