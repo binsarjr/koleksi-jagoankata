@@ -31,19 +31,12 @@ jobs:
           git init
           git branch -m main
           git checkout -b results
-      - name: pull commit
-        uses: actions/checkout@v2      
-        with:
-          ref: results
-      - name: Add results change
-        run: |
           git add results
           git commit -m "transfer results folder"
-
       - name: Github Push
         uses: ad-m/github-push-action@master
-       
         with:
+          force: true
           directory: "."
           branch: results
       - name: pull commit
@@ -53,8 +46,7 @@ jobs:
       - name: extract-folder-results
         continue-on-error: true
         run: |
-          git log -n 1
-          git reset --hard HEAD~1
+          git reset --hard HEAD
           mv results/* .
           rmdir results
           git add -A
