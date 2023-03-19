@@ -40,16 +40,18 @@ jobs:
           git checkout -b results
           git add results
           git commit -m "transfer results folder"
-      # - name: Github Push
-      #   uses: ad-m/github-push-action@master
-      #   with:
-      #     force: true
-      #     directory: "."
-      #     branch: results
-      # - name: pull commit
-      #   uses: actions/checkout@v2      
-      #   with:
-      #     ref: results
+      - name: Github Push
+        uses: ad-m/github-push-action@master
+        with:
+          force: true
+          directory: "."
+          branch: results
+      # Perlu di pull lagi untuk dapetin HEAD commit
+      # Supaya changes file bisa di hapus
+      - name: pull commit
+        uses: actions/checkout@v2      
+        with:
+          ref: results
       - name: extract folder results
         run: |
           git reset --hard HEAD
@@ -61,7 +63,6 @@ jobs:
       - name: Github Push
         uses: ad-m/github-push-action@master
         with:
-          force: true
           directory: "."
           branch: results
   
