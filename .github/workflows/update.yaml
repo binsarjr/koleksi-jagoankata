@@ -28,5 +28,6 @@ jobs:
       - name: Github Push
         uses: ad-m/github-push-action@master
         with:
+          force: true
           directory: "."
           branch: results
