@@ -1,11 +1,15 @@
 name: Update Data
 
 on:
+  schedule:
+    # Menjalankan workflow setiap tanggal 1 di setiap bulan
+    - cron: '0 0 1 * *' 
   workflow_dispatch:
     
   push:
     branches:
       - main
+
 env:
   EMAIL: binsarjr121@gmail.com
   USERNAME: binsarjr
@@ -13,7 +17,7 @@ env:
 
 
 jobs:
-  transfer-to-branch-results:
+  update:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2      
@@ -29,6 +33,7 @@ jobs:
         run: |
           mkdir -p results
           node source/brainyquote.js &
+          node source/goodreads.js &
 
       - name: git config
         run: |
