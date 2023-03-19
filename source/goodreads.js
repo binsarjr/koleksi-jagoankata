@@ -30,11 +30,11 @@ async function scrapeData(url) {
       path: `./results/${domain}.csv`,
       header: [{
           id: 'author',
-          title: 'Author'
+          title: 'author'
         },
         {
           id: 'text',
-          title: 'Text'
+          title: 'text'
         }
       ],
     });

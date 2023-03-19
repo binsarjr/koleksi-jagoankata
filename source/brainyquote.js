@@ -13,11 +13,11 @@ const csvWriter = createCsvWriter({
     path: 'results/brainyquote.csv',
     header: [{
             id: 'author',
-            title: 'Author'
+            title: 'author'
         },
         {
             id: 'text',
-            title: 'Text'
+            title: 'text'
         },
     ],
 });
