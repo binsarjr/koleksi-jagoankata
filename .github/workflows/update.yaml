@@ -49,7 +49,7 @@ jobs:
       - name: extract-folder-results
         continue-on-error: true
         run: |
-          git reset HEAD --hard
+          git reset HEAD~1 --hard
           mv results/* .
           rmdir results
           git add -A
