@@ -17,10 +17,6 @@ jobs:
          fetch-depth: 0
       - name: upload
         run: bash transfer-to-branch-results.sh
-      - name: commit change
-        run: |
-          d=`date '+%Y-%m-%dT%H:%M:%SZ'`
-          git commit -m "$d"
       - name: Github Push
         uses: ad-m/github-push-action@master
         with:
