@@ -10,7 +10,6 @@ on:
 defaults:
   run:
     shell: |
-      bash
       git config --local user.email "binsarjr121@gmail.com"
       git config --local user.name "binsarjr"
 
