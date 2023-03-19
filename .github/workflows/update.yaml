@@ -47,8 +47,8 @@ jobs:
       - name: extract-folder-results
         run: |
           git reset HEAD --hard
-          mv results/* .
-          rmdir results
+          [ -f results ] && mv results/* .
+          [ -f results ] && rmdir results
       - name: commit change
         run: |
           git add -A
