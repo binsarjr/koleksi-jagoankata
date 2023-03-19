@@ -1,0 +1,28 @@
+name: Update Data
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  upload:
+    runs-on: ubuntu-latest
+    steps:
+      - name: upload
+        run: |
+          git checkout -b results
+          git checkout main results
+      - name: commit change
+        run: |
+          mv results/* .
+          git add -A
+          d=`date '+%Y-%m-%dT%H:%M:%SZ'`
+          git commit -m "$d"
+      - name: Github Push
+        uses: ad-m/github-push-action@master
+        with:
+          force: true
+          directory: "."
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: results
