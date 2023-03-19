@@ -15,7 +15,7 @@ jobs:
           git init
           git branch -m main
           git checkout -b results
-          git checkout main results
+          git checkout main results/*
       - name: commit change
         run: |
           mv results/* .
