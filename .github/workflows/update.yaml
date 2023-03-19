@@ -20,13 +20,16 @@ jobs:
         with:
          persist-credentials: false
          fetch-depth: 0
+      - name: Setup NodeJs 17
+        uses: actions/setup-node@v3
+        with:
+          node-version: 17.x
+      - run: npm install
       - name: Run Code Here
         run: |
-          echo "nanti"
-          echo "node scrape.js"
-
-
           mkdir -p results
+          node source/brainyquote.js &
+
       - name: git config
         run: |
           git config --global user.email "$EMAIL"
