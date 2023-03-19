@@ -27,3 +27,22 @@ jobs:
           force: true
           directory: "."
           branch: results
+  extract-folder-results:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2      
+        with:
+         persist-credentials: false
+         fetch-depth: 0
+         ref: results
+      - run: mv results/* .
+      - run: rmdir results
+      - name: commit change
+        run: |
+          d=`date '+%Y-%m-%dT%H:%M:%SZ'`
+          git commit -m "$d"
+      - name: Github Push
+        uses: ad-m/github-push-action@master
+        with:
+          directory: "."
+          branch: results
