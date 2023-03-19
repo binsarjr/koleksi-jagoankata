@@ -1,6 +1,10 @@
-#!/usr/bin/bash
+#!/bin/bash
 git config --global init.defaultBranch main
 git init
+
+git config --local user.email "binsarjr121@gmail.com"
+git config --local user.name "binsarjr"
+
 git branch -m main
 git checkout -b results
 # Use the git merge --no-commit <source-branch> command to merge the changes from the source branch (the branch that currently has the folder) into the target branch. The --no-commit option prevents Git from automatically committing the changes, which will allow you to make additional changes before committing.
