@@ -10,7 +10,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: upload
-        run: bash transfer-to-branch-results.sh
+        run: |
+          set -o pipefail
+          bash transfer-to-branch-results.sh
       - name: commit change
         run: |
           git checkout results
