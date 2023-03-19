@@ -7,9 +7,16 @@ on:
     branches:
       - main
 
+defaults:
+  jobs:
+    runs-on: ubuntu-latest
+    steps:
+      run: |
+        git config --local user.email "binsarjr121@gmail.com"
+        git config --local user.name "binsarjr"
+
 jobs:
   transfer-to-branch-results:
-    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2      
         with:
@@ -24,7 +31,6 @@ jobs:
           directory: "."
           branch: results
   extract-folder-results:
-    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2      
         with:
