@@ -1,5 +1,6 @@
 #!/bin/bash
 git config --global init.defaultBranch main
+rm -rf .git
 git init
 
 git config --local user.email "binsarjr121@gmail.com"
