@@ -19,9 +19,6 @@ jobs:
         run: bash transfer-to-branch-results.sh
       - name: commit change
         run: |
-          git checkout results
-          mv results/* .
-          git add -A
           d=`date '+%Y-%m-%dT%H:%M:%SZ'`
           git commit -m "$d"
       - name: Github Push
