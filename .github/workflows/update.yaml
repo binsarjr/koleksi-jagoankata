@@ -33,17 +33,17 @@ jobs:
           git checkout -b results
           git add results
           git commit -m "transfer results folder"
+      - name: Github Push
+        uses: ad-m/github-push-action@master
+        with:
+          directory: "."
+          branch: results
       - name: pull commit
         uses: actions/checkout@v2      
         with:
           persist-credentials: false
           fetch-depth: 0
           ref: results
-      - name: Github Push
-        uses: ad-m/github-push-action@master
-        with:
-          directory: "."
-          branch: results
       - name: extract-folder-results
         continue-on-error: true
         run: |
