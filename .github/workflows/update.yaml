@@ -51,7 +51,6 @@ jobs:
         with:
           ref: results
       - name: extract folder results
-        continue-on-error: true
         run: |
           git reset --hard HEAD
           mv results/* .
