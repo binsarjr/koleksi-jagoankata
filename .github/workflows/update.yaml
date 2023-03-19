@@ -12,6 +12,8 @@ jobs:
       - name: upload
         run: |
           set -o pipefail
+          ls
+          pwd
           bash transfer-to-branch-results.sh
       - name: commit change
         run: |
