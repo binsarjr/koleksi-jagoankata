@@ -6,12 +6,11 @@ on:
   push:
     branches:
       - main
+env:
+  EMAIL: binsarjr121@gmail.com
+  USERNAME: binsarjr
 
-defaults:
-  run:
-    shell: |
-      git config --local user.email "binsarjr121@gmail.com"
-      git config --local user.name "binsarjr"
+
 
 jobs:
   transfer-to-branch-results:
@@ -21,22 +20,29 @@ jobs:
         with:
          persist-credentials: false
          fetch-depth: 0
+      - name: git config
+        run: |
+          git config --global user.email "$EMAIL"
+          git config --global user.name "$USERNAME"
+          git config --global init.defaultBranch main
       - name: upload
-        run: bash transfer-to-branch-results.sh
+        run: |
+          rm -rf .git
+          git init
+          git branch -m main
+          git checkout -b results
+          git add results
+          git commit -m "transfer results folder"
       - name: Github Push
         uses: ad-m/github-push-action@master
         with:
-          force: true
           directory: "."
           branch: results
-  extract-folder-results:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2      
-        with:
-         ref: results
-      - run: mv results/* .
-      - run: rmdir results
+      - name: extract-folder-results
+        run: |
+          git reset HEAD --hard
+          mv results/* .
+          rmdir results
       - name: commit change
         run: |
           d=`date '+%Y-%m-%dT%H:%M:%SZ'`
@@ -46,3 +52,4 @@ jobs:
         with:
           directory: "."
           branch: results
+  

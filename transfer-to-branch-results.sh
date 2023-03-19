@@ -3,8 +3,6 @@ git config --global init.defaultBranch main
 rm -rf .git
 git init
 
-git config --local user.email "binsarjr121@gmail.com"
-git config --local user.name "binsarjr"
 
 git branch -m main
 
