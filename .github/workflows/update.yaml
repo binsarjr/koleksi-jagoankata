@@ -12,6 +12,7 @@ jobs:
       - name: upload
         run: |
           git init
+          git branch -m main
           git checkout -b results
           git checkout main results
       - name: commit change
