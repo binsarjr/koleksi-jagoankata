@@ -45,12 +45,11 @@ jobs:
           directory: "."
           branch: results
       - name: extract-folder-results
+        continue-on-error: true
         run: |
           git reset HEAD --hard
-          [ -f results ] && mv results/* .
-          [ -f results ] && rmdir results
-      - name: commit change
-        run: |
+          mv results/* .
+          rmdir results
           git add -A
           d=`date '+%Y-%m-%dT%H:%M:%SZ'`
           git commit -m "$d"
