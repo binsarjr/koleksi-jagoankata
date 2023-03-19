@@ -11,6 +11,7 @@ jobs:
     steps:
       - name: upload
         run: |
+          git init
           git checkout -b results
           git checkout main results
       - name: commit change
