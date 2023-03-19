@@ -9,6 +9,7 @@ git config --local user.name "binsarjr"
 git branch -m main
 git add results
 git commit -m "results folder"
+git stash save --keep-index
 
 git checkout -b results
 # Use the git merge --no-commit <source-branch> command to merge the changes from the source branch (the branch that currently has the folder) into the target branch. The --no-commit option prevents Git from automatically committing the changes, which will allow you to make additional changes before committing.
