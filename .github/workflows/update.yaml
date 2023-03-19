@@ -11,6 +11,7 @@ jobs:
     steps:
       - name: upload
         run: |
+          git config --global init.defaultBranch main
           git init
           git branch -m main
           git checkout -b results
